@@ -9,5 +9,7 @@ public interface RelativePath {
 	String Chrome_path = ".\\browsers\\chromedriver.exe";
 	String Firefox_path = ".\\browsers\\geckodriver.exe";
 	String MicrosoftEdge_path = ".\\browsers\\MicrosoftWebDriver.exe";
+	
+	String config_properties_path = ".\\data\\config.properties";
 
 }
