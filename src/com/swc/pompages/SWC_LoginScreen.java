@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class SWC_LoginScreen {
 	
-	WebDriver driver;
+	public static WebDriver driver;
 	
 	public SWC_LoginScreen(WebDriver driver) {
 		this.driver = driver;
