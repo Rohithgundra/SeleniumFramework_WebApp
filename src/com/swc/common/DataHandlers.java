@@ -10,16 +10,13 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-
-
-
-public class DataHandlers {
+public class DataHandlers implements RelativePath {
 	
 	public static String getDataFromPropertyFile(String filename, String key) {
 		
 		String data = null;
 		try {
-			File f = new File("C:\\Users\\user\\OneDrive - Unizen Technologies\\SmartWaterController\\UZ_SWC_SeleniumTool\\data\\"+filename+".properties");
+			File f = new File(config_properties_path);
 			FileInputStream fis = new FileInputStream(f);
 			Properties prop = new Properties();
 			prop.load(fis);
