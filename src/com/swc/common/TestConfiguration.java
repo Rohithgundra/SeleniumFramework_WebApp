@@ -20,7 +20,7 @@ public class TestConfiguration {
 		
 		if(browserType.equalsIgnoreCase("chrome")) {
 			
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\user\\OneDrive - Unizen Technologies\\SmartWaterController\\UZ_SWC_SeleniumTool\\browsers\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", ".\\browsers\\chromedriver.exe");
 			driver = new ChromeDriver();
 			
 		} else if (browserType.equalsIgnoreCase("mozilla")) {
