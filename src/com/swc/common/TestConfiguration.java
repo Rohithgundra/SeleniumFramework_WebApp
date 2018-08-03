@@ -5,8 +5,9 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class TestConfiguration {
+public class TestConfiguration implements RelativePath {
 
 	WebDriver driver = null;
 	
@@ -20,14 +21,17 @@ public class TestConfiguration {
 		
 		if(browserType.equalsIgnoreCase("chrome")) {
 			
-			System.setProperty("webdriver.chrome.driver", ".\\browsers\\chromedriver.exe");
+			System.setProperty(Chrome_properties, Chrome_path);
 			driver = new ChromeDriver();
 			
 		} else if (browserType.equalsIgnoreCase("mozilla")) {
 			
+			System.setProperty(Firefox_properties, Firefox_path);
+			driver = new FirefoxDriver();
+			
 		} else if (browserType.equalsIgnoreCase("edge")) {
 			
-			System.setProperty("webdriver.edge.driver", "C:\\Users\\user\\OneDrive - Unizen Technologies\\SmartWaterController\\UZ_SWC_SeleniumTool\\browsers\\MicrosoftWebDriver.exe");
+			System.setProperty(MicrosoftEdge_properties, MicrosoftEdge_path);
 			driver = new EdgeDriver();
 			
 		} else if (browserType.equalsIgnoreCase("opera")) {
