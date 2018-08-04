@@ -62,10 +62,20 @@ public class SWC_LoginScreen {
     	return driver.findElement(By.xpath("//span[@id='passvalid']")).getText();
     }
     
-    public WebElement ForgotButton() {
+    public WebElement ForgotLink() {
 		
     	return null;
     	
+    }
+    
+    public String UsernamePlaceholder() {
+    	
+    	return driver.findElement(By.xpath("//input[@placeholder='Username']")).getAttribute("placeholder");
+    }
+    
+    public String PasswordPlaceholder() {
+    	
+    	return driver.findElement(By.xpath("//input[@placeholder='Password']")).getAttribute("placeholder");
     }
 
 }
