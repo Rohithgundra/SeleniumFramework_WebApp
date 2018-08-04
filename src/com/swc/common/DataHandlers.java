@@ -9,6 +9,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.util.NumberToTextConverter;
 
 public class DataHandlers implements RelativePath {
 	
@@ -41,6 +42,12 @@ public class DataHandlers implements RelativePath {
 			Cell c = rw.getCell(cellIndex);
 			c.setCellType(Cell.CELL_TYPE_STRING);
 			data = c.getStringCellValue();
+			
+//			if (c.getCellType()==Cell.CELL_TYPE_NUMERIC) {
+//				data = NumberToTextConverter.toText(c.getNumericCellValue());
+//			}else if (c.getCellType()==Cell.CELL_TYPE_STRING) {
+//				data = c.getStringCellValue();
+//			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();
