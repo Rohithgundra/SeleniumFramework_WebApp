@@ -3,10 +3,12 @@ package com.swc.pompages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SWC_LoginScreen {
 	
-	WebDriver driver;
+	public static WebDriver driver;
 	
 	public SWC_LoginScreen(WebDriver driver) {
 		this.driver = driver;
@@ -62,10 +64,26 @@ public class SWC_LoginScreen {
     	return driver.findElement(By.xpath("//span[@id='passvalid']")).getText();
     }
     
-    public WebElement ForgotButton() {
+    public WebElement ForgotLink() {
 		
     	return null;
     	
+    }
+    
+    public String UsernamePlaceholder() {
+    	
+    	return driver.findElement(By.xpath("//input[@placeholder='Username']")).getAttribute("placeholder");
+    }
+    
+    public String PasswordPlaceholder() {
+    	
+    	return driver.findElement(By.xpath("//input[@placeholder='Password']")).getAttribute("placeholder");
+    }
+    
+    public void waitforLoginPageToLoad() {
+    	
+    	WebDriverWait wait = new WebDriverWait(driver,30);
+    	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='wrapper']")));
     }
 
 }
