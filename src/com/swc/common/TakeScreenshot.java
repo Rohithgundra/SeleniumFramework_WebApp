@@ -13,17 +13,22 @@ public class TakeScreenshot {
 	
 	public static WebDriver driver;
 	
-	public  static void captureScreenShot(WebDriver driver, String testName) throws IOException {
+	public  static String captureScreenShot(WebDriver driver, String testName) throws IOException {
 
-			    
+			String dest = null;
 			try {
 				 File scrShot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				 File target = new File(".\\screenshots\\"+ testName + ".png");
+				 dest = System.getProperty("user.dir")+".\\screenshots\\"+testName+".png";
+//				 dest = ".\\screenshots\\"+ testName + ".jpg";
+				 File target = new File(dest);
 				 FileUtils.copyFile(scrShot, target);
+				 
 			}catch (Exception e) {
 				
 				System.out.println("Exception while taking screenshot " + e.getMessage());
 			}
+			return dest;
+			
 			
 			 
 		 }
