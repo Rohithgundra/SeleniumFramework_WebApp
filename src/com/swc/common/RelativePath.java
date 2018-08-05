@@ -11,5 +11,7 @@ public interface RelativePath {
 	String MicrosoftEdge_path = ".\\browsers\\MicrosoftWebDriver.exe";
 	
 	String config_properties_path = ".\\data\\config.properties";
+	String test_data_path = ".\\data\\SWC_TestData.xlsx";
+	
 
 }
