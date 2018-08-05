@@ -12,6 +12,7 @@ public interface RelativePath {
 	
 	String config_properties_path = ".\\data\\config.properties";
 	String test_data_path = ".\\data\\SWC_TestData.xlsx";
+	String log_properties_path = ".\\data\\log4j.properties";
 	
 
 }
