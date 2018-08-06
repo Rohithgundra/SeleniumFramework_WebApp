@@ -85,5 +85,15 @@ public class SWC_LoginScreen {
     	WebDriverWait wait = new WebDriverWait(driver,30);
     	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='wrapper']")));
     }
+    
+    public String UsernameTextBoxAttribute() {
+    	
+    	return driver.findElement(By.xpath("//input[@placeholder='Username']")).getAttribute("type");
+    }
+    
+    public String PasswordTextBoxAttribute() {
+    	
+    	return driver.findElement(By.xpath("//input[@placeholder='Username']")).getAttribute("type");
+    }
 
 }

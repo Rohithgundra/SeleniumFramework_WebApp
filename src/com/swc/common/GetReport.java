@@ -1,20 +1,32 @@
 package com.swc.common;
 
+import java.io.IOException;
+
+
 import org.openqa.selenium.WebDriver;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 public class GetReport implements RelativePath {
 	
+	static ExtentHtmlReporter htmlReporter;
 	static ExtentReports extent;
-	static ExtentTest logger;
+	static ExtentTest test;
+
+	
 	WebDriver driver;
+	
 	
 	public static void initializeReport() {
 		
-		extent = new ExtentReports(extenReports_path);
+		htmlReporter = new ExtentHtmlReporter(extentReports_path);
+		htmlReporter.setAppendExisting(true);
+		extent = new ExtentReports();
+		extent.attachReporter(htmlReporter);
+		extent.setSystemInfo(System.getProperty("os.name"), System.getProperty("os.version"));
 //		extent.loadConfig(new File(".\\extent-config.xml"));
 		
 		
@@ -22,25 +34,23 @@ public class GetReport implements RelativePath {
 	
 	public static void startTestExecution(String classname) {
 		
-		logger = extent.startTest(classname);
+		test = extent.createTest(classname);
 		
 	}
 	
-	public static void passTest() {
+	public static void passTest(String testName) {
 		
-		logger.log(LogStatus.PASS, "Test Case is passed");
+		test.pass("Test Case is passed " + testName);
 	}
 	
-	public static void failTest(String testName, String screenshot) {
+	public static void failTest(String testName, String screenshot) throws IOException {
 		
-		String image = logger.addScreenCapture(screenshot);
-		logger.log(LogStatus.FAIL, "Following Test Case is failed  " + testName, image);
+		test.fail("Following Test Case is failed  " + testName, MediaEntityBuilder.createScreenCaptureFromPath(screenshot).build());
+	
 	}
 	
 	public static void closeReport() {
 		
-		extent.endTest(logger);
 		extent.flush();
-		extent.close();
 	}
 }

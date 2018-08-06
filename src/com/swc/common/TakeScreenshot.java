@@ -9,7 +9,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 
-public class TakeScreenshot {
+public class TakeScreenshot implements RelativePath{
 	
 	public static WebDriver driver;
 	
@@ -18,8 +18,7 @@ public class TakeScreenshot {
 			String dest = null;
 			try {
 				 File scrShot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				 dest = System.getProperty("user.dir")+".\\screenshots\\"+testName+".png";
-//				 dest = ".\\screenshots\\"+ testName + ".jpg";
+				 dest = System.getProperty("user.dir")+".\\screenshots\\"+testName +""+RelativePath.getDateTime2()+".png";
 				 File target = new File(dest);
 				 FileUtils.copyFile(scrShot, target);
 				 

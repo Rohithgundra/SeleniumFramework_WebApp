@@ -1,5 +1,10 @@
 package com.swc.common;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 public interface RelativePath {
 	
 	String Chrome_properties = "webdriver.chrome.driver";
@@ -14,6 +19,30 @@ public interface RelativePath {
 	String test_data_path = ".\\data\\SWC_TestData.xlsx";
 	String log_properties_path = ".\\data\\log4j.properties";
 	
-	String extenReports_path = ".\\extentReports\\TestReport.xlsx";
+	String extentReports_path = ".\\extentReports\\"+ "Reports "+ getDateTime() +".html";
+	
+	String expectedPageTitle = DataHandlers.readExcel("Login", 27, 1);
+	String expectedHeader = DataHandlers.readExcel("Login", 28, 1);
+	String expectedSubHeader = DataHandlers.readExcel("Login", 29, 1);
+	String expectedUsernamePlaceholder = DataHandlers.readExcel("Login", 25, 1);
+	String expectedPasswordPlaceholder = DataHandlers.readExcel("Login", 26, 1);
+	String expectedInvalidErrorMessage = DataHandlers.readExcel("Login", 24, 1);
+	String expectedEmptyUsernameErrorMessage = DataHandlers.readExcel("Login", 22, 1);
+	String expectedEmptyPasswordErrorMessage = DataHandlers.readExcel("Login", 23, 1);
 
+	
+	public static String getDateTime() {
+		
+		DateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy_hhmm");
+	    df.setTimeZone(TimeZone.getTimeZone("IST"));
+		return df.format(new Date());
+		
+		
+	}
+	
+	public static String getDateTime2() {
+		DateFormat df = new SimpleDateFormat("dd MMM yyyy_hhmm");
+	    df.setTimeZone(TimeZone.getTimeZone("IST"));
+		return df.format(new Date());
+	}
 }
