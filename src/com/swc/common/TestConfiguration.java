@@ -15,9 +15,9 @@ public class TestConfiguration implements RelativePath {
 		
 		WebDriver  driver = null;
 		
-		String browserType = DataHandlers.getDataFromPropertyFile("config", "browser");
+		String browserType = DataHandlers.getDataFromPropertyFile("browser");
 		
-		String url = DataHandlers.getDataFromPropertyFile("config", "url");
+		String url = DataHandlers.getDataFromPropertyFile("url");
 		
 		if(browserType.equalsIgnoreCase("chrome")) {
 			
