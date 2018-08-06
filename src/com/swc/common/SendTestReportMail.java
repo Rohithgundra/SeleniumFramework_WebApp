@@ -77,7 +77,7 @@ public class SendTestReportMail implements RelativePath {
 			MimeBodyPart messageBodyPart2 = new MimeBodyPart();
  
 			// Mention the file which you want to send
-			String filename = extenReports_path;
+			String filename = extentReports_path;
  
 			// Create data source and pass the filename
 			DataSource source = new FileDataSource(filename);
