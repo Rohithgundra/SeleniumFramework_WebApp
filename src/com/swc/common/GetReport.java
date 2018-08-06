@@ -2,6 +2,7 @@ package com.swc.common;
 
 import java.io.IOException;
 
+
 import org.openqa.selenium.WebDriver;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -18,12 +19,14 @@ public class GetReport implements RelativePath {
 	
 	WebDriver driver;
 	
+	
 	public static void initializeReport() {
 		
 		htmlReporter = new ExtentHtmlReporter(extentReports_path);
 		htmlReporter.setAppendExisting(true);
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
+		extent.setSystemInfo(System.getProperty("os.name"), System.getProperty("os.version"));
 //		extent.loadConfig(new File(".\\extent-config.xml"));
 		
 		
