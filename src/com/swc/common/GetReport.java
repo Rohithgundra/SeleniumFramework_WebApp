@@ -20,7 +20,7 @@ public class GetReport implements RelativePath {
 	
 	public static void initializeReport() {
 		
-		htmlReporter = new ExtentHtmlReporter(extenReports_path);
+		htmlReporter = new ExtentHtmlReporter(extentReports_path);
 		htmlReporter.setAppendExisting(true);
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
@@ -43,6 +43,7 @@ public class GetReport implements RelativePath {
 	public static void failTest(String testName, String screenshot) throws IOException {
 		
 		test.fail("Following Test Case is failed  " + testName, MediaEntityBuilder.createScreenCaptureFromPath(screenshot).build());
+	
 	}
 	
 	public static void closeReport() {
