@@ -14,7 +14,7 @@ import org.apache.poi.ss.util.NumberToTextConverter;
 
 public class DataHandlers implements RelativePath {
 	
-	public static String getDataFromPropertyFile(String filename, String key) {
+	public static String getDataFromPropertyFile(String key) {
 		
 		String data = null;
 		try {
