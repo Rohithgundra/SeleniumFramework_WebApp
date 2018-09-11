@@ -1,7 +1,13 @@
 package com.swc.common;
 
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
+
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -42,7 +48,27 @@ public class TestConfiguration implements RelativePath {
 		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.get(url);
+		
+		
+		try {
+			  HttpURLConnection conn = (HttpURLConnection) (new URL(url)).openConnection();
+			      conn.setUseCaches(false);
+			      conn.connect();
+			      int status = conn.getResponseCode();
+			      
+			      if(status == 200) {
+			    	  driver.get(url);
+			      }else {
+			    	  System.out.println("Not getting 200 response from server");
+			    	  JOptionPane.showMessageDialog(null, "Not getting 200 response from server", "Server Error", JOptionPane.ERROR_MESSAGE);
+			    	  JOptionPane.getRootFrame().dispose();
+		
+			    	  driver.quit();
+			      }
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}
 		return driver;
 	}
 	
