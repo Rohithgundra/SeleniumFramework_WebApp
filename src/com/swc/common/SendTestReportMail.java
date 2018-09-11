@@ -65,13 +65,13 @@ public class SendTestReportMail implements RelativePath {
 			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("sritajp@gmail.com"));
             
                         // Add the subject link
-			message.setSubject("Testing Subject");
+			message.setSubject("Build Verification Test Results!");
  
 			// Create object to add multimedia type content
 			BodyPart messageBodyPart1 = new MimeBodyPart();
  
 			// Set the body of email
-			messageBodyPart1.setText("This is message body");
+			messageBodyPart1.setText("Hola, We just got a new build to test. We have run a quick test to verify the Application is smooth and up. Please check the reports.");
  
 			// Create another object to add another content
 			MimeBodyPart messageBodyPart2 = new MimeBodyPart();
