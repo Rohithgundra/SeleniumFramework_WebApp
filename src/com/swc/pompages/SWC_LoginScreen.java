@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SWC_LoginScreen {
 	
-	public static WebDriver driver;
+	public WebDriver driver;
 	
 	public SWC_LoginScreen(WebDriver driver) {
 		this.driver = driver;
@@ -93,7 +93,7 @@ public class SWC_LoginScreen {
     
     public String PasswordTextBoxAttribute() {
     	
-    	return driver.findElement(By.xpath("//input[@placeholder='Username']")).getAttribute("type");
+    	return driver.findElement(By.xpath("//input[@placeholder='Password']")).getAttribute("type");
     }
 
 }
