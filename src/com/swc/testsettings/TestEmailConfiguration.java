@@ -1,4 +1,4 @@
-package com.swc.testscripts;
+package com.swc.testsettings;
 
 import java.io.IOException;
 
@@ -10,17 +10,15 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.swc.common.DataHandlers;
 import com.swc.common.GetReport;
 import com.swc.common.SendTestReportMail;
 import com.swc.common.TakeScreenshot;
 import com.swc.common.TestConfiguration;
 import com.swc.pompages.SWC_LoginScreen;
 
-public class EmailTest {
+public class TestEmailConfiguration {
 	  WebDriver driver;
 	  SWC_LoginScreen ls;
-	  String uname = DataHandlers.readExcel("Login", 2, 0);
 	  String className = getClass().getName();
 	  
  @Test
@@ -29,8 +27,8 @@ public class EmailTest {
 	  GetReport.startTestExecution(className);
 	  
 
-		  ls.UsernameTextfield().sendKeys(uname);
-		  ls.PasswordTextfield().sendKeys(uname); 
+		  ls.UsernameTextfield().sendKeys("uswm");
+		  ls.PasswordTextfield().sendKeys("6"); 
 		  
 	  }
 	
