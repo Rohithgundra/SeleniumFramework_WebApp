@@ -1,4 +1,4 @@
-package com.swc.testscripts;
+package com.swc.sampleappscripts;
 
 import java.util.ArrayList;
 import java.util.Arrays;

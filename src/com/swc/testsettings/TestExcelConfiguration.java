@@ -1,4 +1,4 @@
-package com.swc.testscripts;
+package com.swc.testsettings;
 
 
 import org.openqa.selenium.WebDriver;
@@ -9,11 +9,11 @@ import com.swc.common.RelativePath;
 import com.swc.common.TestConfiguration;
 import com.swc.pompages.SWC_LoginScreen;
 
-public class script implements RelativePath {
+public class TestExcelConfiguration implements RelativePath {
 	
 	static WebDriver driver;
 	static String excel = "C:\\Users\\srita\\Desktop\\Test Data.xlsx";
-	static String uname = DataHandlers.readExcel(excel, "Sheet1", 1, 0);
+	static String uname = DataHandlers.readExcel(excel, 1, 0);
 	
 	public static void main(String[] args) throws InterruptedException {
 		

@@ -1,42 +1,41 @@
-package com.swc.testscripts;
+package com.swc.testsettings;
 
 import org.testng.annotations.Test;
 
-import com.swc.common.DataHandlers;
-import com.swc.common.LogHandler;
+import com.swc.common.GetReport;
 import com.swc.common.TakeScreenshot;
 import com.swc.common.TestConfiguration;
+
 import com.swc.pompages.SWC_LoginScreen;
 import org.testng.annotations.BeforeMethod;
+
 import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 
-	public class LogTest {
+	public class TestExtentReportConfiguration {
 		
 		  WebDriver driver;
-		  TakeScreenshot tsr;
 		  SWC_LoginScreen ls;
-		  String uname = DataHandlers.readExcel("Login", 2, 0);
 		  String className = getClass().getName();
 		  
 	  @Test
 	  public void sampleTest() {
 		 
-//		  ls.UsernameTextfield().sendKeys(uname);
-//		  ls.PasswordTextfield().sendKeys(uname);
+		  GetReport.startTestExecution(className);
 		  driver.findElement(By.id("UN0")).sendKeys("uname");
 		  
 	  }
 	  @BeforeMethod
 	  public void beforeMethod() throws IOException {
 		  
+		  GetReport.initializeReport();
 		  driver = TestConfiguration.getInstance();
 		  ls = new SWC_LoginScreen(driver);
-		  LogHandler.getLogs(className);
 		  
+	  
 	  }
 
 	  @AfterMethod
@@ -45,14 +44,15 @@ import org.testng.annotations.AfterMethod;
 		  if(ITestResult.FAILURE == result.getStatus()) {
 				 
 				 String testName = result.getName().toString();
-				 TakeScreenshot.captureScreenShot(driver, testName);
-				 DataHandlers.writeIntoExcel("Login", 2, 5, "FAILED");
-				 LogHandler.logInfo("Error found");
-				 LogHandler.logError("Failed");
+				 String screenShot = TakeScreenshot.captureScreenShot(driver, testName);
+				 GetReport.failTest(testName, screenShot);
+				 
 				    
 			 }
 		  
 		  driver.close();
+		  
+		  GetReport.closeReport();
 	  }
 	  
 	}

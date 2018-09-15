@@ -1,26 +1,21 @@
-package com.swc.testscripts;
+package com.swc.testsettings;
 
 import org.testng.annotations.Test;
 
-	import com.swc.common.DataHandlers;
+import com.swc.common.DataHandlers;
 import com.swc.common.LogHandler;
 import com.swc.common.TakeScreenshot;
-	import com.swc.common.TestConfiguration;
-	import com.swc.pompages.SWC_LoginScreen;
+import com.swc.common.TestConfiguration;
+import com.swc.pompages.SWC_LoginScreen;
 
-	import org.testng.annotations.BeforeMethod;
-
-
-	import java.io.IOException;
-import java.util.logging.Logger;
-
-import org.apache.log4j.PropertyConfigurator;
+import org.testng.annotations.BeforeMethod;
+import java.io.IOException;
 import org.openqa.selenium.By;
-	import org.openqa.selenium.WebDriver;
-	import org.testng.ITestResult;
-	import org.testng.annotations.AfterMethod;
+import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 
-	public class testNG {
+	public class TestFrameworkConfiguration {
 		
 		  WebDriver driver;
 		  TakeScreenshot tsr;
@@ -31,8 +26,7 @@ import org.openqa.selenium.By;
 	  @Test
 	  public void sampleTest() {
 		 
-//		  ls.UsernameTextfield().sendKeys(uname);
-//		  ls.PasswordTextfield().sendKeys(uname);
+
 		  driver.findElement(By.id("UN0")).sendKeys("uname");
 		  
 	  }
