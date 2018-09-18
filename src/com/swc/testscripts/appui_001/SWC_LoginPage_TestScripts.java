@@ -180,8 +180,8 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
   public void LoginPage_SignInWithValidCredentials() throws InterruptedException {
 	 
 	  GetReport.startTestExecution(className);
-	  ls.UsernameTextfield().sendKeys("uswm");
-	  ls.PasswordTextfield().sendKeys("6");
+	  ls.UsernameTextfield().sendKeys(ReleavantData.superadmin_uname);
+	  ls.PasswordTextfield().sendKeys(ReleavantData.superadmin_pword);
 	  ls.SignInButton().click();
 	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	  String actualDashboardTitle = driver.getTitle();
@@ -200,8 +200,8 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 		  ls.PasswordTextfield().sendKeys("invalid");
 		  ls.SignInButton().click();
 			  
-		  ls.UsernameTextfield().sendKeys("uswm");
-		  ls.PasswordTextfield().sendKeys("6");
+		  ls.UsernameTextfield().sendKeys(ReleavantData.superadmin_uname);
+		  ls.PasswordTextfield().sendKeys(ReleavantData.superadmin_pword);
 		  ls.SignInButton().click();
 		  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		  String actualDashboardTitle = driver.getTitle();
@@ -232,8 +232,8 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 		  ls.PasswordTextfield().clear();
 		  ls.SignInButton();
 		  
-		  ls.UsernameTextfield().sendKeys("uswm");
-		  ls.PasswordTextfield().sendKeys("6");
+		  ls.UsernameTextfield().sendKeys(ReleavantData.superadmin_uname);
+		  ls.PasswordTextfield().sendKeys(ReleavantData.superadmin_pword);
 		  ls.SignInButton().click();
 		  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		  String actualDashboardTitle = driver.getTitle();

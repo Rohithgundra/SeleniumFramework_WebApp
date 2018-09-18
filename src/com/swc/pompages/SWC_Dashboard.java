@@ -150,5 +150,11 @@ public class SWC_Dashboard {
 		 }
 	 }
    
+   public WebElement UserSubscriptionLink() {
+		
+	   return driver.findElement(By.linkText("User Subscription"));
+	   
+   }
+   
 
 }
