@@ -30,7 +30,6 @@ public static void main(String[] args) throws InterruptedException {
 		System.out.println(us.UserSubTitle());
 		System.out.println(us.UserSubTitle());
 		us.CreateUserButton().click();
-		us.HandleAlert();
 		
 		
  }
