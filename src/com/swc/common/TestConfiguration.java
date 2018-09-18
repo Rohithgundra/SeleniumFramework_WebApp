@@ -3,10 +3,11 @@ package com.swc.common;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JOptionPane;
-import javax.swing.Timer;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -58,6 +59,25 @@ public class TestConfiguration implements RelativePath {
 			      
 			      if(status == 200) {
 			    	  driver.get(url);
+			    	  try {
+						  
+						  String parent = driver.getWindowHandle();
+						  Set<String> windows = driver.getWindowHandles();
+						  Iterator<String> it = windows.iterator();
+						  while(it.hasNext())
+						  {
+							  
+							 String child_window=it.next();
+							 if(!parent.equals(child_window)) {
+								 driver.switchTo().window(child_window);
+								 driver.close();
+							 }
+							
+						  }
+							 driver.switchTo().window(parent);
+					  }catch(Exception e) {
+						  e.printStackTrace();
+					  }
 			      }else {
 			    	  System.out.println("Not getting 200 response from server");
 			    	  JOptionPane.showMessageDialog(null, "Not getting 200 response from server", "Server Error", JOptionPane.ERROR_MESSAGE);
