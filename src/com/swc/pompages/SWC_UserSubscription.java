@@ -1,9 +1,13 @@
 package com.swc.pompages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import junit.framework.Assert;
 
 public class SWC_UserSubscription {
 
@@ -27,6 +31,18 @@ public WebDriver driver;
 	public WebElement UserSubscriptionLink() {
 		
 		return driver.findElement(By.linkText("User Subscription"));
+		
+	}
+	
+    public List<WebElement> FindAllLabelsInUserSubscription() { //>>>>>>>>Not working
+		
+			List<WebElement> listOfLabels = driver.findElements(By.xpath("//td//b"));
+			for (int i = 0; i < listOfLabels.size(); i++){
+				
+				listOfLabels.size();
+								}
+			return listOfLabels;
+			
 		
 	}
 	
@@ -60,14 +76,29 @@ public WebDriver driver;
 	    	return driver.findElement(By.id("uname"));
 	   }
 	 
+	 public String GetUsernameTextboxAttribute() {
+	    	
+	    	return driver.findElement(By.id("uname")).getAttribute("placeholder");
+	   }
+	 
 	 public WebElement EmailIDTextbox() {
 	    	
 	    	return driver.findElement(By.id("email"));
 	   }
 	 
+	 public String GetEmailIDTextboxAttribute() {
+	    	
+	    	return driver.findElement(By.id("email")).getAttribute("placeholder");
+	   }
+	 
 	 public WebElement MobileNumberTextbox() {
 	    	
 	    	return driver.findElement(By.id("contact"));
+	   }
+	 
+	 public String GetMobileNumberTextboxAttribute() {
+	    	
+	    	return driver.findElement(By.id("contact")).getAttribute("placeholder");
 	   }
 	 
 	 
@@ -81,9 +112,11 @@ public WebDriver driver;
 	    	return driver.findElement(By.xpath("//input[@value = 'Create user']"));
 	   }
 	 
-	 public boolean HandleAlert() {
+	 public boolean HandleAlert(String expectedMsg) {
 		 try {
+			 String actualMsg = driver.switchTo().alert().getText();
 			 driver.switchTo().alert().accept();
+			 Assert.assertEquals(expectedMsg, actualMsg);
 			 return true;
 	
 		 }catch (NoAlertPresentException Ex) {
@@ -91,5 +124,19 @@ public WebDriver driver;
 		 }
 	 }
 	 
+	 public WebElement AddLocationWindowSearchBar() {
+		 
+		 return driver.findElement(By.xpath("//input[@type = 'text']"));
+	 }
+	 
+	 public WebElement AddLocationWindowSubmitButton() {
+		 
+		 return driver.findElement(By.xpath("//input[@type = 'submit']"));
+	 }
+	 
+	 public WebElement AddLocationWindowSelectFirstValue() {
+		 
+		 return driver.findElement(By.xpath("//a[@href = '#']"));
+	 }
 	 
 }
