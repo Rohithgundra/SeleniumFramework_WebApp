@@ -100,7 +100,7 @@ public class SWC_UserSubscription_TestScripts {
 	  }
 	  
 //	  @Test
-//	  /*Check the labels in the UserSubscription page -------------- Code Not working*/
+//	  /*Check the labels in the UserSubscription page --------------  Code Is Okay, Configuration is Failing*/
 //	  public void UserSubscription_AllLabels() {
 //		  
 //		
@@ -108,7 +108,7 @@ public class SWC_UserSubscription_TestScripts {
 //		  for (int i = 0; i<user.FindAllLabelsInUserSubscription().size(); i++) {
 //				
 //				String text = user.FindAllLabelsInUserSubscription().get(i).getText();
-//				Assert.assertEquals(ReleavantData.allLabelsPresent[i], text);
+//				Assert.assertEquals(ReleavantData.allLabelsPresentInUserSub[i], text);
 //			}
 //		  
 //	  }		
