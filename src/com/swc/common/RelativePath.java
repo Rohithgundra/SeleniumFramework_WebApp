@@ -20,6 +20,7 @@ public interface RelativePath {
 	String log_properties_path = ".\\data\\log4j.properties";
 	
 	String extentReports_path = ".\\extentReports\\"+ "Reports "+ getDateTime() +".html";
+	String testNGReports_path = ".\\test-output\\Regression Suite\\regression.html";
 
 	
 	public static String getDateTime() {
