@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">	
+
+<suite thread-count="1" verbose="1" name="Regression Suite" annotations="JDK" parallel="tests">
+         
+  <test name="regression">
+	 <classes>
+
+	    <class name="com.swc.testscripts.appui_001.SWC_LoginPage_TestScripts"/>
+	    <class name="com.swc.testscripts.appui_001.SWC_Dashboard_TestScripts"/>
+	    <class name="com.swc.testscripts.appui_001.SWC_UserSubscription_TestScripts"/>
+
+	 </classes>
+   </test>
+  
+</suite>
