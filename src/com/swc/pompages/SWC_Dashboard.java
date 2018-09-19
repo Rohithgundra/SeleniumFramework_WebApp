@@ -8,6 +8,8 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import junit.framework.Assert;
+
 
 
 public class SWC_Dashboard {
@@ -18,13 +20,14 @@ public class SWC_Dashboard {
 		this.driver = driver;
 	}
 	
-	public String Dashboard() {
+	public String DashboardTitle() {
 		return driver.getTitle();
 	}
 	
-//	public String HeaderWaterConsumption() {
-//		return driver.findElement(By.xpath("//h3[@class = 'box-title']")).getText();
-//	}
+	
+	public String HeaderWaterConsumption() {
+	return driver.findElement(By.xpath("//b[contains(text(),'Water Consumption in Litres')]")).getText();
+	}
 	
 	
     public List<WebElement> FindAllLabels() {
@@ -140,9 +143,11 @@ public class SWC_Dashboard {
 	   
    }
    
-   public boolean HandleAlert() {
+	 public boolean HandleAlert(String expectedMsg) {
 		 try {
+			 String actualMsg = driver.switchTo().alert().getText();
 			 driver.switchTo().alert().accept();
+			 Assert.assertEquals(expectedMsg, actualMsg);
 			 return true;
 	
 		 }catch (NoAlertPresentException Ex) {
