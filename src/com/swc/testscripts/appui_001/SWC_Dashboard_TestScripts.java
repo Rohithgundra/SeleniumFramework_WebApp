@@ -1,6 +1,7 @@
 package com.swc.testscripts.appui_001;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
@@ -44,7 +45,7 @@ public class SWC_Dashboard_TestScripts {
 			 
 	  }
 	  
-	  @Test
+	  @Test (priority=1)	
 	  /*Check the title of the Dashboard page*/
 	  public void Dashboard_Title() {
 		 
@@ -56,7 +57,7 @@ public class SWC_Dashboard_TestScripts {
 		  
 	  }
 	  
-	  @Test
+	  @Test (priority=2)	
 	  public void Dashboard_WaterConsumptionHeader() {
 		  
 		  GetReport.startTestExecution(className);
@@ -64,7 +65,7 @@ public class SWC_Dashboard_TestScripts {
 		  Assert.assertEquals(ReleavantData.expectedHeaderForWaterConsumption, actualWaterConsumptionHeader);
 	  }
 	  
-	  @Test
+	  @Test (priority=3)
 	  /*Check the error message when Submit button is clicked without selecting Apartment*/
 	  public void Dashboard_SubmitWithoutApartmentField() {
 		 DropDownHandlers.selectDDLByIndex(dash.HousingTypeDropDownBox(), 0);
@@ -73,64 +74,77 @@ public class SWC_Dashboard_TestScripts {
 		 dash.HandleAlert(ReleavantData.expectedErrorMessageWhenApartmentIsNotSelected);
 	  }
 	  
-	  @Test
+	  @Test (priority=4)
 	  /*Check the error message when Submit button is clicked without selecting Block*/
 	  public void Dashboard_SubmitWithoutBlockField() {
 		 
 		 GetReport.startTestExecution(className);
 		 DropDownHandlers.selectDDLByIndex(dash.HousingTypeDropDownBox(), 0);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(dash.ApartmentsDropDownBox(), 1);
 		 dash.SubmitButton().click();
 		 dash.HandleAlert(ReleavantData.expectedErrorMessageWhenBlockIsNotSelected);
 	  }
 	  
-	  @Test
+	  @Test (priority=5)
 	  /*Check the error message when Submit button is clicked without selecting Water Meter*/
 	  public void Dashboard_SubmitWithoutWaterMeterField() {
 		 
 		 GetReport.startTestExecution(className);
 		 DropDownHandlers.selectDDLByIndex(dash.HousingTypeDropDownBox(), 0);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(dash.ApartmentsDropDownBox(), 1);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(dash.BlocksDropDownBox(), 1);
 		 dash.SubmitButton().click();
 		 dash.HandleAlert(ReleavantData.expectedErrorMessageWhenWaterMeterIsNotSelected);
 	  }
 	  
-	  @Test
+	  @Test (priority=6)
 	  /*Check the error message when Submit button is clicked without selecting From Date*/
 	  public void Dashboard_SubmitWithoutFromDate() {
 		 
 		 GetReport.startTestExecution(className);
 		 DropDownHandlers.selectDDLByIndex(dash.HousingTypeDropDownBox(), 0);
 		 DropDownHandlers.selectDDLByIndex(dash.ApartmentsDropDownBox(), 1);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(dash.BlocksDropDownBox(), 1);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(dash.WaterMetersDropDownBox(), 1);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 dash.SubmitButton().click();
 		 dash.HandleAlert(ReleavantData.expectedErrorMessageWhenFromDataIsMissing);
 	  }
 	  
-	  @Test
+	  @Test (priority=7)
 	  /*Check the error message when Submit button is clicked without selecting To Date*/
 	  public void Dashboard_SubmitWithoutToDate() {
 		 
 		 GetReport.startTestExecution(className);
 		 DropDownHandlers.selectDDLByIndex(dash.HousingTypeDropDownBox(), 0);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(dash.ApartmentsDropDownBox(), 1);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(dash.BlocksDropDownBox(), 1);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(dash.WaterMetersDropDownBox(), 1);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 dash.FromDate().sendKeys("08/29/2018 6:28 PM");
 		 dash.SubmitButton().click();
 		 dash.HandleAlert(ReleavantData.expectedErrorMessageWhenToDataIsMissing);
 	  }
 	  
-	  @Test
+	  @Test (priority=8)
 	  /*Check Submit button when all entries are filled*/
 	  public void Dashboard_SubmitWithAllFields() {
 		 
 		 GetReport.startTestExecution(className);
 		 DropDownHandlers.selectDDLByIndex(dash.HousingTypeDropDownBox(), 0);
-		 DropDownHandlers.selectDDLByIndex(dash.ApartmentsDropDownBox(), 1);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		 DropDownHandlers.selectDDLByIndex(dash.ApartmentsDropDownBox(), 5);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(dash.BlocksDropDownBox(), 1);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(dash.WaterMetersDropDownBox(), 1);
 		 dash.FromDate().sendKeys("08/29/2018 6:28 PM");
 		 dash.ToDate().sendKeys("08/29/2018 8:28 PM");
@@ -163,7 +177,14 @@ public class SWC_Dashboard_TestScripts {
 				 
 				 String testName = result.getName().toString();
 				 GetReport.passTest(testName);
+				 
+			 } else if (ITestResult.SKIP == result.getStatus()) {
+				 
+				 String testName = result.getName().toString();
+				 GetReport.passTest(testName);
+				 
 			 }
+		  
 		  
 		  
 		  driver.close();

@@ -49,7 +49,7 @@ public class SWC_UserSubscription_TestScripts {
 			 
 	  }
 	  
-	  @Test
+	  @Test (priority=1)
 	  /*Check the title of the UserSubscription page*/
 	  public void UserSubscription_Title() {
 		 
@@ -59,7 +59,7 @@ public class SWC_UserSubscription_TestScripts {
 		  
 	  }
 	  
-	  @Test
+	  @Test (priority=2)
 	  /*Check the header of the UserSubscription page*/
 	  public void UserSubscription_Header() {
 		 
@@ -69,7 +69,7 @@ public class SWC_UserSubscription_TestScripts {
 		  
 	  }
 	  
-	  @Test
+	  @Test (priority=3)
 	  /*Check the placeholder for the Username field*/
 	  public void UserSubscription_HeaderPlaceholder() {
 		 
@@ -79,7 +79,7 @@ public class SWC_UserSubscription_TestScripts {
 		  
 	  }
 	  
-	  @Test
+	  @Test (priority=4)
 	  /*Check the placeholder for the Email ID field*/
 	  public void UserSubscription_EmailIDSPlaceholder() {
 		 
@@ -89,7 +89,7 @@ public class SWC_UserSubscription_TestScripts {
 		  
 	  }
 	  
-	  @Test
+	  @Test (priority=5)
 	  /*Check the placeholder for the Mobile Number field*/
 	  public void UserSubscription_MobileNumberPlaceholder() {
 		 
@@ -113,7 +113,7 @@ public class SWC_UserSubscription_TestScripts {
 //		  
 //	  }		
 	  
-	  @Test
+	  @Test (priority=6)
 	  /*Check the error message when Create User button is clicked without selecting Apartment*/
 	  public void UserSubscription_CreateWithoutApartmentField() {
 		 DropDownHandlers.selectDDLByIndex(user.HousingTypeDropDownBox(), 0);
@@ -122,7 +122,7 @@ public class SWC_UserSubscription_TestScripts {
 		 user.HandleAlert(ReleavantData.expectedErrorMessageWhenApartmentIsNotSelected);
 	  }
 	  
-	  @Test
+	  @Test (priority=7)
 	  /*Check the error message when Create User button is clicked without selecting Block*/
 	  public void UserSubscription_CreateWithoutBlockField() {
 		 
@@ -133,32 +133,35 @@ public class SWC_UserSubscription_TestScripts {
 		 user.HandleAlert(ReleavantData.expectedErrorMessageWhenBlockIsNotSelected);
 	  }
 	  
-	  @Test
+	  @Test (priority=8)
 	  /*Check the error message when Create User button is clicked without selecting Water Meter*/
 	  public void UserSubscription_CreateWithoutWaterMeterField() {
 		 
 		 GetReport.startTestExecution(className);
 		 DropDownHandlers.selectDDLByIndex(user.HousingTypeDropDownBox(), 0);
 		 DropDownHandlers.selectDDLByIndex(user.ApartmentsDropDownBox(), 1);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(user.BlocksDropDownBox(), 1);
 		 user.CreateUserButton().click();
 		 user.HandleAlert(ReleavantData.expectedErrorMessageWhenWaterMeterIsNotSelected);
 	  }
 	  
-	  @Test
+	  @Test (priority=9)
 	  /*Check the error message when Create User button is clicked without selecting User Type*/
 	  public void UserSubscription_CreateWithoutUserTypeField() {
 		 
 		 GetReport.startTestExecution(className);
 		 DropDownHandlers.selectDDLByIndex(user.HousingTypeDropDownBox(), 0);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(user.ApartmentsDropDownBox(), 1);
 		 DropDownHandlers.selectDDLByIndex(user.BlocksDropDownBox(), 1);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(user.WaterMetersDropDownBox(), 1);
 		 user.CreateUserButton().click();
 		 user.HandleAlert(ReleavantData.expectedErrorMessageWhenUserTypeIsNotSelected);
 	  }
 	  
-	  @Test
+	  @Test (priority=10)
 	  /*Check the error message when Create User button is clicked without setting Username*/
 	  public void UserSubscription_CreateWithoutUsername() {
 		 
@@ -175,7 +178,7 @@ public class SWC_UserSubscription_TestScripts {
 		 user.HandleAlert(ReleavantData.expectedErrorMessageWhenUsernameIsNotSet);
 	  }
 	  
-	  @Test
+	  @Test (priority=11)
 	  /*Check the error message when already existing Username is used*/
 	  public void UserSubscription_CreateWithExistingUsername() {
 		 
@@ -192,7 +195,7 @@ public class SWC_UserSubscription_TestScripts {
 		 user.HandleAlert(ReleavantData.expectedErrorMessageWhenUsernameAlreadyExits);
 	  }
 	  
-	  @Test
+	  @Test (priority=12)
 	  /*Check the error message when already existing Email ID is used*/
 	  public void UserSubscription_CreateWithExistingEmailID() {
 		 
@@ -210,7 +213,7 @@ public class SWC_UserSubscription_TestScripts {
 		 user.HandleAlert(ReleavantData.expectedErrorMessageWhenEmailAlreadyExits);
 	  }
 	  
-	  @Test
+	  @Test (priority=13)
 	  /*Check the error message when Create User button is clicked without setting Email ID*/
 	  public void UserSubscription_CreateWithoutEmailID() {
 		 
@@ -223,12 +226,12 @@ public class SWC_UserSubscription_TestScripts {
 		 DropDownHandlers.selectDDLByIndex(user.WaterMetersDropDownBox(), 1);
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(user.UserTypeDropDownBox(), 1);
-		 user.SetUsernameTextbox().sendKeys("admin");
+		 user.SetUsernameTextbox().sendKeys("admina");
 		 user.CreateUserButton().click();
 		 user.HandleAlert(ReleavantData.expectedErrorMessageWhenEmailIDIsNotSet);
 	  }
 	  
-	  @Test
+	  @Test (priority=14)
 	  /*Check the error message when Create User button is clicked without setting Mobile Number*/
 	  public void UserSubscription_CreateWithoutMobileNumber() {
 		 
@@ -241,13 +244,13 @@ public class SWC_UserSubscription_TestScripts {
 		 DropDownHandlers.selectDDLByIndex(user.WaterMetersDropDownBox(), 1);
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(user.UserTypeDropDownBox(), 1);
-		 user.SetUsernameTextbox().sendKeys("admin");
-		 user.EmailIDTextbox().sendKeys("email@unizen.com");
+		 user.SetUsernameTextbox().sendKeys("adm2in");
+		 user.EmailIDTextbox().sendKeys("emailas@unizen.com");
 		 user.CreateUserButton().click();
 		 user.HandleAlert(ReleavantData.expectedErrorMessageWhenMobileNumberIsNotSet);
 	  }
 	  
-	  @Test
+	  @Test (priority=15)
 	  /*Check the error message when Create User button is clicked without setting Location*/
 	  public void UserSubscription_CreateWithoutLocation() {
 		 
@@ -260,15 +263,15 @@ public class SWC_UserSubscription_TestScripts {
 		 DropDownHandlers.selectDDLByIndex(user.WaterMetersDropDownBox(), 1);
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(user.UserTypeDropDownBox(), 1);
-		 user.SetUsernameTextbox().sendKeys("admin");
-		 user.EmailIDTextbox().sendKeys("email@unizen.com");
+		 user.SetUsernameTextbox().sendKeys("admi11n");
+		 user.EmailIDTextbox().sendKeys("emailsa@unizen.com");
 		 user.MobileNumberTextbox().sendKeys("0008988980");
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 user.CreateUserButton().click();
 		 user.HandleAlert(ReleavantData.expectedErrorMessageWhenLocationIsNotSet);
 	  }
 	  
-	  @Test
+	  @Test (priority=16)
 	  /*Check the error message when Create User button is clicked with Mobile number in invalid format*/
 	  public void UserSubscription_CreateWithInvalidMobileNumber() {
 		 
@@ -281,8 +284,8 @@ public class SWC_UserSubscription_TestScripts {
 		 DropDownHandlers.selectDDLByIndex(user.WaterMetersDropDownBox(), 1);
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(user.UserTypeDropDownBox(), 1);
-		 user.SetUsernameTextbox().sendKeys("admin");
-		 user.EmailIDTextbox().sendKeys("email@unizen.com");
+		 user.SetUsernameTextbox().sendKeys("admindw");
+		 user.EmailIDTextbox().sendKeys("emailqw@unizen.com");
 		 user.MobileNumberTextbox().sendKeys("000898");
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 user.CreateUserButton().click();
@@ -293,7 +296,7 @@ public class SWC_UserSubscription_TestScripts {
 		 user.HandleAlert(ReleavantData.expectedErrorMessageWhenMobileNumberIsNotValid);
 	  }
 	  
-	  @Test
+	  @Test (priority=17)
 	  /*Check all required inputs for creating the User can be filled*/
 	  public void UserSubscription_CreateWithAllFields() {
 		 
@@ -306,8 +309,8 @@ public class SWC_UserSubscription_TestScripts {
 		 DropDownHandlers.selectDDLByIndex(user.WaterMetersDropDownBox(), 1);
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(user.UserTypeDropDownBox(), 1);
-		 user.SetUsernameTextbox().sendKeys("admin");
-		 user.EmailIDTextbox().sendKeys("email@unizen.com");
+		 user.SetUsernameTextbox().sendKeys("admina");
+		 user.EmailIDTextbox().sendKeys("email4@unizen.com");
 		 user.MobileNumberTextbox().sendKeys("0008988000");
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 String handle = driver.getWindowHandle();
@@ -340,7 +343,7 @@ public class SWC_UserSubscription_TestScripts {
 		 }
 		 
 	
-	  @Test
+	  @Test (priority=18)
 	  /*Check the error message when Create User button is clicked when the selected Water Meter is already mapped*/
 	  public void UserSubscription_CreateWhenWaterMeterIsAlreadyMapped() {
 		 
@@ -353,13 +356,14 @@ public class SWC_UserSubscription_TestScripts {
 		 DropDownHandlers.selectDDLByIndex(user.WaterMetersDropDownBox(), 1);
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(user.UserTypeDropDownBox(), 1);
-		 user.SetUsernameTextbox().sendKeys("kurama");
-		 user.EmailIDTextbox().sendKeys("email@unizen.com");
+		 user.SetUsernameTextbox().sendKeys("kurama23");
+		 user.EmailIDTextbox().sendKeys("email16@unizen.com");
 		 user.MobileNumberTextbox().sendKeys("0008988000");
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 String handle = driver.getWindowHandle();
 		 System.out.println(handle);
 		 user.AddLocationButton().click();
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
 		 try {
 			  
@@ -372,9 +376,11 @@ public class SWC_UserSubscription_TestScripts {
 				 String child_window=it.next();
 				 if(!parent.equals(child_window)) {
 					 driver.switchTo().window(child_window);
+					 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 					 user.AddLocationWindowSearchBar().sendKeys("BTM Layout");
 					 user.AddLocationWindowSubmitButton().click();
 					 user.AddLocationWindowSelectFirstValue().click();
+					 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 				 }
 				
 			  }
@@ -387,17 +393,18 @@ public class SWC_UserSubscription_TestScripts {
 		 
 		 }
 	  
-	  @Test
+	  @Test (priority=19)
 	  /*Check able to create new User*/
 	  public void UserSubscription_CreateNewUser() {
 		 
 		 GetReport.startTestExecution(className);
 		 DropDownHandlers.selectDDLByIndex(user.HousingTypeDropDownBox(), 0);
+		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByVisibleText(user.ApartmentsDropDownBox(), "Unizen");
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(user.BlocksDropDownBox(), 1);
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-		 DropDownHandlers.selectDDLByIndex(user.WaterMetersDropDownBox(), 5);
+		 DropDownHandlers.selectDDLByIndex(user.WaterMetersDropDownBox(), 7);
 		 driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		 DropDownHandlers.selectDDLByIndex(user.UserTypeDropDownBox(), 1);
 		 user.SetUsernameTextbox().sendKeys(ReleavantData.newUsername);
@@ -450,6 +457,12 @@ public class SWC_UserSubscription_TestScripts {
 				 
 				 String testName = result.getName().toString();
 				 GetReport.passTest(testName);
+				 
+			 } else if (ITestResult.SKIP == result.getStatus()) {
+				 
+				 String testName = result.getName().toString();
+				 GetReport.passTest(testName);
+				 
 			 }
 		  
 		  
