@@ -20,15 +20,7 @@ public interface RelativePath {
 	String log_properties_path = ".\\data\\log4j.properties";
 	
 	String extentReports_path = ".\\extentReports\\"+ "Reports "+ getDateTime() +".html";
-	
-	String expectedPageTitle = DataHandlers.readExcel("Login", 27, 1);
-	String expectedHeader = DataHandlers.readExcel("Login", 28, 1);
-	String expectedSubHeader = DataHandlers.readExcel("Login", 29, 1);
-	String expectedUsernamePlaceholder = DataHandlers.readExcel("Login", 25, 1);
-	String expectedPasswordPlaceholder = DataHandlers.readExcel("Login", 26, 1);
-	String expectedInvalidErrorMessage = DataHandlers.readExcel("Login", 24, 1);
-	String expectedEmptyUsernameErrorMessage = DataHandlers.readExcel("Login", 22, 1);
-	String expectedEmptyPasswordErrorMessage = DataHandlers.readExcel("Login", 23, 1);
+	String testNGReports_path = ".\\test-output\\Regression Suite\\regression.html";
 
 	
 	public static String getDateTime() {

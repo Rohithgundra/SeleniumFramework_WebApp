@@ -82,6 +82,7 @@ public class TestConfiguration implements RelativePath {
 			    	  System.out.println("Not getting 200 response from server");
 			    	  JOptionPane.showMessageDialog(null, "Not getting 200 response from server", "Server Error", JOptionPane.ERROR_MESSAGE);
 			    	  JOptionPane.getRootFrame().dispose();
+			    	  TakeScreenshot.captureScreenShot(driver, "ServerError");
 		
 			    	  driver.quit();
 			      }

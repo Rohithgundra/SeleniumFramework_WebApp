@@ -38,7 +38,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  
 	  }
 	  
-  @Test
+  @Test (priority=1)	
   /*Check the title of the Login page*/
   public void LoginPage_Title() {
 	 
@@ -48,7 +48,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  
   }
   
-  @Test
+  @Test (priority=2)	
   /*Check the header of the Login page*/
   public void LoginPage_Header() {
 	 
@@ -58,7 +58,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  
   }
   
-  @Test
+  @Test (priority=3)	
   /*Check the sub headers present in the login page*/
   public void LoginPage_SubHeader() {
 	 
@@ -68,7 +68,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  
   }
   
-  @Test
+  @Test (priority=4)	
   /*Check the Username placeholder*/
   public void LoginPage_UsernamePlaceholder() {
 	 
@@ -78,7 +78,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  
   }
   
-  @Test
+  @Test (priority=5)	
   /*Check the Username textboxAttribute*/
   public void LoginPage_UsernameAttribute() {
 	 
@@ -88,7 +88,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  
   }
   
-  @Test
+  @Test (priority=6)	
   /*Check the Password textboxAttribute*/
   public void LoginPage_PasswordAttribute() {
 	 
@@ -99,7 +99,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
   }
   
   
-  @Test
+  @Test (priority=7)	
   /*Check the Password placeholder*/
   public void LoginPage_PasswordPlaceholder() {
 	 
@@ -109,7 +109,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  
   }
   
-  @Test
+  @Test (priority=8)	
   /*Check the Login with Invalid Credentials*/
   public void LoginPage_SignInWithInvalidCredentials() {
 	 
@@ -123,7 +123,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test
+  @Test (priority=9)	
   /*Check the Login with Invalid Username*/
   public void LoginPage_SignInWithInvalidUsername() {
 	 
@@ -137,7 +137,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test
+  @Test (priority=10)	
   /*Check the Login with Invalid Password*/
   public void LoginPage_SignInWithInvalidPassword() {
 	 
@@ -151,7 +151,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test
+  @Test (priority=11)	
   /*Check the Login without providing Username and Password*/
   public void LoginPage_SignInWithBlankCredentials() {
 	 
@@ -163,7 +163,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test
+  @Test (priority=12)	
   /*Check the Login without providing Password*/
   public void LoginPage_SignInWithBlankPassword() {
 	 
@@ -175,7 +175,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test
+  @Test (priority=13)	
   /*Check the Login with valid credentials*/
   public void LoginPage_SignInWithValidCredentials() throws InterruptedException {
 	 
@@ -190,7 +190,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test
+  @Test (priority=14)	
   /*Check the Login initially with invalid credentials and later valid credentials*/
   public void LoginPage_SignInAttempts() throws InterruptedException {
 	 
@@ -216,7 +216,7 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test
+  @Test (priority=15)	
   /*Check the Login initially with invalid credentials, blank fields and later valid credentials*/
   public void LoginPage_RepeatedSignInAttempts() throws InterruptedException {
 	 
@@ -264,6 +264,12 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 			 
 			 String testName = result.getName().toString();
 			 GetReport.passTest(testName);
+			 
+		 } else if (ITestResult.SKIP == result.getStatus()) {
+			 
+			 String testName = result.getName().toString();
+			 GetReport.passTest(testName);
+			 
 		 }
 	  
 	  

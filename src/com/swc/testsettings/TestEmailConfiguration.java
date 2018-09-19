@@ -31,15 +31,8 @@ public class TestEmailConfiguration {
 		  ls.PasswordTextfield().sendKeys("6"); 
 		  
 	  }
-	
-	  @Test
-	  public void sampleTest2() {
-	 	 
-	 	  GetReport.startTestExecution(className);
-	 	  driver.findElement(By.id("UN0")).sendKeys("uname");
 
-	  
- }
+	 
  @BeforeMethod
  public void beforeMethod() throws IOException {
 	  

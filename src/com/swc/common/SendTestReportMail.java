@@ -26,7 +26,8 @@ public class SendTestReportMail implements RelativePath {
 		Properties props = new Properties();
  
 		// this will set host of server- you can change based on your requirement 
-		props.put("mail.smtp.host", "smtp.gmail.com");
+//		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.host", "outlook.office365.com");
  
 		// set the port of socket factory 
 		props.put("mail.smtp.socketFactory.port", "465");
@@ -36,9 +37,12 @@ public class SendTestReportMail implements RelativePath {
  
 		// set the authentication to true
 		props.put("mail.smtp.auth", "true");
+		/* Required for Outlook 365 */
+		props.put("mail.smtp.starttls.enable", "true");
  
 		// set the port of SMTP server
-		props.put("mail.smtp.port", "465");
+//		props.put("mail.smtp.port", "465");
+		props.put("mail.smtp.port", "587");
  
 		// This will handle the complete authentication
 		Session session = Session.getDefaultInstance(props,
@@ -47,7 +51,8 @@ public class SendTestReportMail implements RelativePath {
  
 					protected PasswordAuthentication getPasswordAuthentication() {
  
-					return new PasswordAuthentication("sritaj.info@gmail.com", "lucario1990");
+//					return new PasswordAuthentication("example", "example");
+					return new PasswordAuthentication("example", "example");
  
 					}
  
@@ -59,19 +64,21 @@ public class SendTestReportMail implements RelativePath {
 			Message message = new MimeMessage(session);
  
 			// Set the from address
-			message.setFrom(new InternetAddress("sritaj.info@gmail.com"));
+			message.setFrom(new InternetAddress("example"));
  
 			// Set the recipient address
-			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("sritajp@gmail.com"));
+//			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("example"));
+			message.addRecipients(Message.RecipientType.CC, 
+                    InternetAddress.parse("vikky@unizentechnologies.com"));
             
                         // Add the subject link
-			message.setSubject("Build Verification Test Results!");
+			message.setSubject("CloudApp - Regression Test Results!");
  
 			// Create object to add multimedia type content
 			BodyPart messageBodyPart1 = new MimeBodyPart();
  
 			// Set the body of email
-			messageBodyPart1.setText("Hola, We just got a new build to test. We have run a quick test to verify the Application is smooth and up. Please check the reports.");
+			messageBodyPart1.setText("Hi, We just got a new SWC Cloud Build to test. We have run a quick Regression Suite to verify the Build is smooth and up without any hiccups.Please check the reports.");
  
 			// Create another object to add another content
 			MimeBodyPart messageBodyPart2 = new MimeBodyPart();
