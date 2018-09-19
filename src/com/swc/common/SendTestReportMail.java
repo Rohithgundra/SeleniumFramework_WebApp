@@ -51,8 +51,8 @@ public class SendTestReportMail implements RelativePath {
  
 					protected PasswordAuthentication getPasswordAuthentication() {
  
-//					return new PasswordAuthentication("sritaj.info@gmail.com", "lucario1990");
-					return new PasswordAuthentication("sritajpatel@unizentechnologies.com", "Sritaj29513");
+//					return new PasswordAuthentication("example", "example");
+					return new PasswordAuthentication("example", "example");
  
 					}
  
@@ -64,10 +64,10 @@ public class SendTestReportMail implements RelativePath {
 			Message message = new MimeMessage(session);
  
 			// Set the from address
-			message.setFrom(new InternetAddress("sritajpatel@unizentechnologies.com"));
+			message.setFrom(new InternetAddress("example"));
  
 			// Set the recipient address
-//			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("vikky@unizentechnologies.com"));
+//			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("example"));
 			message.addRecipients(Message.RecipientType.CC, 
                     InternetAddress.parse("vikky@unizentechnologies.com"));
             
