@@ -55,9 +55,9 @@ public interface ReleavantData {
 	 String expectedErrorMessageWhenEmailAlreadyExits = "Email already registered";
 	 String expectedErrorMessageWhenWaterMeterIsAlreadyMapped = "Selected Water Meter is already mapped to an existing user!";
 	 
-	 String newUsername = "";
-	 String newEmail = "";
-	 String phoneNumber = "";
+	 String newUsername = "unknown";
+	 String newEmail = "unknown@gmail.com";
+	 String phoneNumber = "0001221001";
 	 
 	 String expectedSucessMessageWhenNewUserIsCreated = "User registered successfully.Please check your email notification for activation!";
 }
