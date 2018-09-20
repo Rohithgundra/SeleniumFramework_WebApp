@@ -19,7 +19,7 @@ public interface RelativePath {
 	String test_data_path = ".\\data\\SWC_TestData.xlsx";
 	String log_properties_path = ".\\data\\log4j.properties";
 	
-	String extentReports_path = ".\\extentReports\\"+ "Reports "+ getDateTime() +".html";
+	String extentReports_path = ".\\extentReports\\"+ "AutomationTestReport "+ getDateTime() +".html";
 	String testNGReports_path = ".\\test-output\\Regression Suite\\regression.html";
 
 	
@@ -28,8 +28,6 @@ public interface RelativePath {
 		DateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy_hhmm");
 	    df.setTimeZone(TimeZone.getTimeZone("IST"));
 		return df.format(new Date());
-		
-		
 	}
 	
 	public static String getDateTime2() {
