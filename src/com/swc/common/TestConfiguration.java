@@ -1,12 +1,19 @@
 package com.swc.common;
 
 
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 import org.openqa.selenium.WebDriver;
@@ -79,11 +86,10 @@ public class TestConfiguration implements RelativePath {
 						  e.printStackTrace();
 					  }
 			      }else {
+			    	  driver.get(url);
 			    	  System.out.println("Not getting 200 response from server");
 			    	  JOptionPane.showMessageDialog(null, "Not getting 200 response from server", "Server Error", JOptionPane.ERROR_MESSAGE);
 			    	  JOptionPane.getRootFrame().dispose();
-			    	  TakeScreenshot.captureScreenShot(driver, "ServerError");
-		
 			    	  driver.quit();
 			      }
 		}catch (Exception e) {

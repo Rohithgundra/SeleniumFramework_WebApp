@@ -124,6 +124,16 @@ public WebDriver driver;
 		 }
 	 }
 	 
+	 public boolean AlertPresence() {
+		 try {
+			 driver.switchTo().alert();
+			 return true;
+			 
+		 }catch (NoAlertPresentException Ex) {
+			 return false;
+		 }
+	 }
+	 
 	 public WebElement AddLocationWindowSearchBar() {
 		 
 		 return driver.findElement(By.xpath("//input[@type = 'text']"));

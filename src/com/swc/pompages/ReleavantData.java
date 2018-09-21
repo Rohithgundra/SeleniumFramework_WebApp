@@ -17,6 +17,7 @@ public interface ReleavantData {
 	 String expectedBlankCredentialsErrorMsg = "Please enter Username!";
 	 String expectedBlankPasswordErrorMsg = "Please enter Password!";
 	 String expectedDashboardTitle = "Water";
+
 	 String superadmin_uname = "uswm";
 	 String superadmin_pword ="6";
 	 String superadmin_emailid = "vikky3@unizentechnologies.com";
@@ -55,20 +56,36 @@ public interface ReleavantData {
 	 String expectedErrorMessageWhenEmailAlreadyExits = "Email already registered";
 	 String expectedErrorMessageWhenWaterMeterIsAlreadyMapped = "Selected Water Meter is already mapped to an existing user!";
 	 
+	 
+     /* Remove Water Meter data parameters */
+	 
+	 String expectedRmWaterMeterTitle = "Remove Water Meter";
+	 String expectedRmWaterMeterHeader = "Remove Water Meter";
+	 String expectedErrorMessageWhenWaterMeterIsNotFound = "No Water Meters Found!";
+	 
+	 /* Sync Water Meter data parameters */
+	 
+	 String expectedSyncWaterMeterTitle = "Sync-Water Meter";
+	 String expectedSyncWaterMeterHeader = "Sync-Water Meter";
+	 /* QA Credentials Details - Combination of new Username, Email and Phone Number*/
 	 String newUsername = "alphaq";
 	 String newEmail = "qalpha@unizen.com";
 	 String phoneNumber = "0001221001";
 	 
-	 String fixedUsername = "sabretooth";
-	 String fixedEmail = "sabretooth@unizen.com";
-	 String fixedPhoneNumber = "0001221001";
+	 /* QA Credentials Details - Combination of Username, Email and Phone Number that doesn't exist*/
+	 String nonUsername = "sabretooth";
+	 String nonEmail = "sabretooth@unizen.com";
+	 String nonPhoneNumber = "0001221001";
 	 
 	 String expectedSucessMessageWhenNewUserIsCreated = "User registered successfully.Please check your email notification for activation!";
 	 
 	 
-	 /* Dropdown Details */
+	 /* QA Dropdown Details - Combination having Apartments, Blocks and Water Meters with Location Enabled*/
 	 
-	 String apartment1 = "Hogwarts";
+	 String trueApartment = "Hogwarts";
 	 String apartment2 = "";
+	 String trueApartment_block1 = "";
+	 String trueApartment_block2 = "";
+	
 	
 }
