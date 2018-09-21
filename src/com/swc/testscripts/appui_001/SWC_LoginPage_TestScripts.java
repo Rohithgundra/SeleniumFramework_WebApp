@@ -1,6 +1,7 @@
 package com.swc.testscripts.appui_001;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -25,95 +26,81 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	
 	 WebDriver driver;
 	 SWC_LoginScreen ls;
-	 String className = getClass().getName();
 
 	  @BeforeMethod
-	  public void beforeMethod() throws IOException {
+	  public void beforeMethod(Method method) throws IOException {
 		  
 		  GetReport.initializeReport();
 		  driver = TestConfiguration.getInstance();
 		  ls = new SWC_LoginScreen(driver);
-		  ls.waitforLoginPageToLoad();
+		  String testName = method.getName();
+		  String testDescription = method.getAnnotation(Test.class).testName();
+		  GetReport.startTestExecution(testName, testDescription );
 		  
 	  
 	  }
+
 	  
-  @Test (priority=1)	
-  /*Check the title of the Login page*/
+  @Test (priority=1, testName = "Verify the Title of the Login Page")	
   public void LoginPage_Title() {
 	 
-	 GetReport.startTestExecution(className);
 	 String actualPageTitle = ls.LoginScreenTitle();
 	 Assert.assertEquals(ReleavantData.expectedPageTitle, actualPageTitle);
 	  
   }
   
-  @Test (priority=2)	
-  /*Check the header of the Login page*/
+  @Test (priority=2, testName = "Verify the Header of the Login Page")	
   public void LoginPage_Header() {
 	 
-	 GetReport.startTestExecution(className);
 	 String actualHeader = ls.LoginHeader();
 	 Assert.assertEquals(ReleavantData.expectedHeader, actualHeader);
 	  
   }
   
-  @Test (priority=3)	
-  /*Check the sub headers present in the login page*/
+  @Test (priority=3, testName = "Verify the SubHeader of the Login Page")	
   public void LoginPage_SubHeader() {
 	 
-	 GetReport.startTestExecution(className);
 	 String actualSubHeader = ls.LoginSubHeader();
 	 Assert.assertEquals(ReleavantData.expectedSubHeader, actualSubHeader);
 	  
   }
   
-  @Test (priority=4)	
-  /*Check the Username placeholder*/
+  @Test (priority=4, testName = "Verify the Username Placeholder")		
   public void LoginPage_UsernamePlaceholder() {
 	 
-	 GetReport.startTestExecution(className);
 	 String actualSubHeader = ls.UsernamePlaceholder();
 	 Assert.assertEquals(ReleavantData.expectedUsernamePlaceholder, actualSubHeader);
 	  
   }
   
-  @Test (priority=5)	
-  /*Check the Username textboxAttribute*/
+  @Test (priority=5, testName = "Verify the Username Attribute")
   public void LoginPage_UsernameAttribute() {
 	 
-	 GetReport.startTestExecution(className);
 	 String actualdUsernameAttribute = ls.UsernameTextBoxAttribute();
 	 Assert.assertEquals(ReleavantData.expectedUsernameAttribute, actualdUsernameAttribute);
 	  
   }
   
-  @Test (priority=6)	
-  /*Check the Password textboxAttribute*/
+  @Test (priority=6, testName = "Verify the Password Attribute")
   public void LoginPage_PasswordAttribute() {
 	 
-	 GetReport.startTestExecution(className);
 	 String actualdPasswordAttribute = ls.PasswordTextBoxAttribute();
 	 Assert.assertEquals(ReleavantData.expectedPasswordAttribute, actualdPasswordAttribute);
 	  
   }
   
   
-  @Test (priority=7)	
-  /*Check the Password placeholder*/
+  @Test (priority=7, testName = "Verify the Password Placeholder")	
   public void LoginPage_PasswordPlaceholder() {
 	 
-	 GetReport.startTestExecution(className);
 	 String actualSubHeader = ls.PasswordPlaceholder();
 	 Assert.assertEquals(ReleavantData.expectedPasswordPlaceholder, actualSubHeader);
 	  
   }
   
-  @Test (priority=8)	
-  /*Check the Login with Invalid Credentials*/
+  @Test (priority=8, testName = "Verify the Login with Invalid Credentials")	
   public void LoginPage_SignInWithInvalidCredentials() {
 	 
-	  GetReport.startTestExecution(className);
 	  ls.UsernameTextfield().sendKeys("admin");
 	  ls.PasswordTextfield().sendKeys("123456");
 	  ls.SignInButton().click();
@@ -123,11 +110,9 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test (priority=9)	
-  /*Check the Login with Invalid Username*/
+  @Test (priority=9, testName = "Verify the Login with Invalid Username")	
   public void LoginPage_SignInWithInvalidUsername() {
 	 
-	  GetReport.startTestExecution(className);
 	  ls.UsernameTextfield().sendKeys("admin");
 	  ls.PasswordTextfield().sendKeys("123456");
 	  ls.SignInButton().click();
@@ -137,11 +122,9 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test (priority=10)	
-  /*Check the Login with Invalid Password*/
+  @Test (priority=10, testName = "Verify the Login with Invalid Password")	
   public void LoginPage_SignInWithInvalidPassword() {
 	 
-	  GetReport.startTestExecution(className);
 	  ls.UsernameTextfield().sendKeys("admin");
 	  ls.PasswordTextfield().sendKeys("123456");
 	  ls.SignInButton().click();
@@ -151,11 +134,9 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test (priority=11)	
-  /*Check the Login without providing Username and Password*/
+  @Test (priority=11, testName = "Verify the Login with Blank Credentials")	
   public void LoginPage_SignInWithBlankCredentials() {
 	 
-	  GetReport.startTestExecution(className);
 	  ls.SignInButton().click();
 	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	  String actualBlankCredentialsErrorMsg = ls.EmptyUsernameMessage();
@@ -163,11 +144,9 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test (priority=12)	
-  /*Check the Login without providing Password*/
+  @Test (priority=12, testName = "Verify the Login with Blank Password")	
   public void LoginPage_SignInWithBlankPassword() {
 	 
-	  GetReport.startTestExecution(className);
 	  ls.UsernameTextfield().sendKeys("admin");
 	  ls.SignInButton().click();
 	  String actualBlankPasswordErrorMsg = ls.EmptyPasswordMessage();
@@ -175,11 +154,9 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test (priority=13)	
-  /*Check the Login with valid credentials*/
+  @Test (priority=13, testName = "Verify the Login with Valid Credenetials")	
   public void LoginPage_SignInWithValidCredentials() throws InterruptedException {
 	 
-	  GetReport.startTestExecution(className);
 	  ls.UsernameTextfield().sendKeys(ReleavantData.superadmin_uname);
 	  ls.PasswordTextfield().sendKeys(ReleavantData.superadmin_pword);
 	  ls.SignInButton().click();
@@ -190,11 +167,9 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test (priority=14)	
-  /*Check the Login initially with invalid credentials and later valid credentials*/
+  @Test (priority=14, testName = "Verify the Login with Invalid and followed by Valid Credenetials")	
   public void LoginPage_SignInAttempts() throws InterruptedException {
 	 
-	  GetReport.startTestExecution(className);
 	  try {
 		  ls.UsernameTextfield().sendKeys("inavlid");
 		  ls.PasswordTextfield().sendKeys("invalid");
@@ -216,11 +191,9 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  @Test (priority=15)	
-  /*Check the Login initially with invalid credentials, blank fields and later valid credentials*/
+  @Test (priority=15, testName = "Verify the Login with Invalid, followed by Blank and Valid Credenetials")	
   public void LoginPage_RepeatedSignInAttempts() throws InterruptedException {
 	 
-	  GetReport.startTestExecution(className);
 	  try {
 		  
 		  
@@ -248,8 +221,6 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  	    
   }
   
-  
-  
   @AfterMethod
   public void afterMethod(ITestResult result) throws IOException {
 	  
@@ -258,19 +229,19 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 			 String testName = result.getName().toString();
 			 String screenShot = TakeScreenshot.captureScreenShot(driver, testName);
 			 GetReport.failTest(testName, screenShot);
+			 GetReport.failTestException(result.getThrowable());
 			 
-			    
-		 } else if (ITestResult.SUCCESS == result.getStatus()) {
-			 
-			 String testName = result.getName().toString();
-			 GetReport.passTest(testName);
-			 
-		 } else if (ITestResult.SKIP == result.getStatus()) {
+	  } else if (ITestResult.SUCCESS == result.getStatus()) {
 			 
 			 String testName = result.getName().toString();
 			 GetReport.passTest(testName);
 			 
-		 }
+	  } else if (ITestResult.SKIP == result.getStatus()) {
+			 
+			 String testName = result.getName().toString();
+			 GetReport.passTest(testName);
+			 
+	  }
 	  
 	  
 	  driver.close();
@@ -279,11 +250,11 @@ public class SWC_LoginPage_TestScripts implements RelativePath, ReleavantData{
 	  GetReport.closeReport();
 }
   
-  @AfterSuite
-  public void finalWork() {
- 	 
- 	 SendTestReportMail.sendReport();
- 	 
-  }
+//  @AfterSuite
+//  public void finalWork() {
+// 	 
+// 	 SendTestReportMail.sendReport();
+// 	 
+//  }
   
 }
