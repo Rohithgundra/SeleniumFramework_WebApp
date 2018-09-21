@@ -69,7 +69,7 @@ public class SendTestReportMail implements RelativePath {
 			// Set the recipient address
 //			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("example"));
 			message.addRecipients(Message.RecipientType.CC, 
-                    InternetAddress.parse("vikky@unizentechnologies.com"));
+                    InternetAddress.parse("example"));
             
                         // Add the subject link
 			message.setSubject("CloudApp - Regression Test Results!");
@@ -78,7 +78,7 @@ public class SendTestReportMail implements RelativePath {
 			BodyPart messageBodyPart1 = new MimeBodyPart();
  
 			// Set the body of email
-			messageBodyPart1.setText("Hi, We just got a new SWC Cloud Build to test. We have run a quick Regression Suite to verify the Build is smooth and up without any hiccups.Please check the reports.");
+			messageBodyPart1.setText("Hi, We just got a new SWC Cloud Build to test." + "\n\nWe have run a quick Regression Suite to verify the Build is smooth and up without any hiccups.Please check the reports.");
  
 			// Create another object to add another content
 			MimeBodyPart messageBodyPart2 = new MimeBodyPart();

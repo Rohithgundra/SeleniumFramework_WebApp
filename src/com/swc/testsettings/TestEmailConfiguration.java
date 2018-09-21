@@ -1,8 +1,8 @@
 package com.swc.testsettings;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -23,9 +23,6 @@ public class TestEmailConfiguration {
 	  
  @Test
  public void sampleTest() {
-	 
-	  GetReport.startTestExecution(className);
-	  
 
 		  ls.UsernameTextfield().sendKeys("uswm");
 		  ls.PasswordTextfield().sendKeys("6"); 
@@ -34,29 +31,37 @@ public class TestEmailConfiguration {
 
 	 
  @BeforeMethod
- public void beforeMethod() throws IOException {
+ public void beforeMethod(Method method) throws IOException {
 	  
 	  GetReport.initializeReport();
 	  driver = TestConfiguration.getInstance();
 	  ls = new SWC_LoginScreen(driver);
-
+	  String testName = method.getName();
+	  String testDescription = method.getAnnotation(Test.class).testName();
+	  GetReport.startTestExecution(testName, testDescription );
 	  
+ 
  }
 
  @AfterMethod
  public void afterMethod(ITestResult result) throws IOException {
 	  
+		
 	  if(ITestResult.FAILURE == result.getStatus()) {
 			 
 			 String testName = result.getName().toString();
-			 TakeScreenshot.captureScreenShot(driver, testName);
 			 String screenShot = TakeScreenshot.captureScreenShot(driver, testName);
 			 GetReport.failTest(testName, screenShot);
-		 } else if (ITestResult.SUCCESS == result.getStatus()) {
+			 GetReport.failTestException(result.getThrowable());
+			 
+			    
+       } else if (ITestResult.SUCCESS == result.getStatus()) {
 			 
 			 String testName = result.getName().toString();
 			 GetReport.passTest(testName);
-		 }
+
+	  
+	   }
 	  
 	  driver.close();
 	  GetReport.closeReport();

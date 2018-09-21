@@ -25,8 +25,8 @@ public interface ReleavantData {
 	 
 	 String [] allLabelsPresentInWaterConsumption = {"Housing Type", "Apartments", "Blocks", "Water Meters", "From Date", "To Date", "Filter By", "Action"};
 	 String expectedHeaderForWaterConsumption = "Water Consumption in Litres";
-	 String expectedErrorMessageWhenFromDataIsMissing = "Choose FromDate";
-	 String expectedErrorMessageWhenToDataIsMissing = "Choose ToDate";
+	 String expectedErrorMessageWhenFromDateIsMissing = "Choose FromDate";
+	 String expectedErrorMessageWhenToDateIsMissing = "Choose ToDate";
 	 String FromDate = "09/19/2018 6:00 AM";
 	 String ToDate =  "09/19/2018 9:00 PM";
 	 
@@ -55,9 +55,20 @@ public interface ReleavantData {
 	 String expectedErrorMessageWhenEmailAlreadyExits = "Email already registered";
 	 String expectedErrorMessageWhenWaterMeterIsAlreadyMapped = "Selected Water Meter is already mapped to an existing user!";
 	 
-	 String newUsername = "unknown";
-	 String newEmail = "unknown@gmail.com";
+	 String newUsername = "alphaq";
+	 String newEmail = "qalpha@unizen.com";
 	 String phoneNumber = "0001221001";
 	 
+	 String fixedUsername = "sabretooth";
+	 String fixedEmail = "sabretooth@unizen.com";
+	 String fixedPhoneNumber = "0001221001";
+	 
 	 String expectedSucessMessageWhenNewUserIsCreated = "User registered successfully.Please check your email notification for activation!";
+	 
+	 
+	 /* Dropdown Details */
+	 
+	 String apartment1 = "Hogwarts";
+	 String apartment2 = "";
+	
 }
