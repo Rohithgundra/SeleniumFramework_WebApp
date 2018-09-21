@@ -71,7 +71,6 @@ import org.testng.annotations.AfterMethod;
 		   }
 		  
           driver.close();
-//          GetReport.executionDetails();
 		  GetReport.closeReport();
 	  
 	}
