@@ -23,5 +23,11 @@ public class WaitStatements {
              WebDriverWait wait = new WebDriverWait(driver, 30);
              wait.until(ExpectedConditions.visibilityOf(element));
 	}
+	
+	public static void ExplicitWaitForAlert(WebDriver driver) {
+		
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.alertIsPresent());
+}
 
 }
