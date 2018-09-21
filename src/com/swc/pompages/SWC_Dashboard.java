@@ -154,6 +154,16 @@ public class SWC_Dashboard {
 			 return false;
 		 }
 	 }
+	 
+	 public boolean AlertPresence() {
+		 try {
+			 driver.switchTo().alert();
+			 return true;
+			 
+		 }catch (NoAlertPresentException Ex) {
+			 return false;
+		 }
+	 }
    
    public WebElement UserSubscriptionLink() {
 		
@@ -161,5 +171,16 @@ public class SWC_Dashboard {
 	   
    }
    
+   public WebElement RmWaterMeterLink() {
+		
+		return driver.findElement(By.linkText("Remove Water Meter"));
+		
+	}
+   
+   public WebElement SyncMeterLink() {
+		
+		return driver.findElement(By.linkText("Sync-Water Meter"));
+		
+	}
 
 }
