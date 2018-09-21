@@ -4,12 +4,16 @@
          
   <test name="regression">
 	 <classes>
-
-	    <class name="com.swc.testscripts.appui_001.SWC_LoginPage_TestScripts"/>
-	    <class name="com.swc.testscripts.appui_001.SWC_Dashboard_TestScripts"/>
-	    <class name="com.swc.testscripts.appui_001.SWC_UserSubscription_TestScripts"/>
+	 
+	   <class name="com.swc.testscripts.appui_001.SWC_LoginPage_TestScripts"/>
+	   <class name="com.swc.testscripts.appui_001.SWC_Dashboard_TestScripts"/>
+	   <class name="com.swc.testscripts.appui_001.SWC_UserSubscription_TestScripts"/>
 
 	 </classes>
    </test>
+   
+   <listeners>
+    <listener class-name="com.swc.common.ListenersHandlers" ></listener>
+  </listeners>
   
 </suite>
